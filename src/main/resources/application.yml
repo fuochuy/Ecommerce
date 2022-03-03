@@ -1,6 +1,7 @@
 ## Datasource
 spring:
-
+  config: 
+    import: openapi.yml
   security:
     user:
       name: admin
@@ -42,3 +43,6 @@ api:
   role:
     name: role controller
     description: role endpoints
+  categories:
+    name: categories controller
+    description: categories endpoints
