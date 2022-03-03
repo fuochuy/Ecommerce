@@ -29,13 +29,13 @@ public class OrderDetails {
 	@JoinColumn(name="productId", nullable = false)
 	private int productId;
 	
-	@Column(name="unitPrice")
+	@Column(name="unitPrice", nullable = false)
 	private float unitPrice;
 	
-	@Column(name="quantity")
+	@Column(name="quantity", nullable = false)
 	private int quantity;
 	
-	@Column(name="discount")
+	@Column(name="discount", nullable = false)
 	private float discount;
 	
 	

@@ -68,14 +68,13 @@ CREATE TABLE IF NOT EXISTS orderDetails(
 
 CREATE TABLE IF NOT EXISTS orders(
  id   			INT,
- customerId		INT,
- orderDate  	DATE,
- requireDate 	DATE,
- receiver		VARCHAR(50),
- address		VARCHAR(200),
- description 	VARCHAR(1000),
- amount			FLOAT,
- phone			VARCHAR(10),
+ customerId		INT NOT NULL,
+ orderDate  	DATE NOT NULL,
+ requireDate 	DATE NOT NULL,
+ receiver		VARCHAR(50) NOT NULL,
+ address		VARCHAR(200) NOT NULL,
+ description 	VARCHAR(1000) NOT NULL,
+ phone			VARCHAR(10) NOT NULL,
  primary key(id)
 );
 
