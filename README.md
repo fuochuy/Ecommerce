@@ -1,2 +1,1 @@
-# Java 14 Du An Cuoi Khoa
-
+# Java 14 Gira Application

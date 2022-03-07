@@ -1,16 +1,16 @@
 ## Datasource
 spring:
-  config: 
-    import: openapi.yml
+
   security:
     user:
       name: admin
       password: 1234
       
   datasource:
-    url: jdbc:postgresql://localhost:5432/gira
+    url: jdbc:postgresql://localhost:5432/ecommerce
     username: postgres
     password: admin
+
     
   jpa:
     show-sql: true
@@ -24,25 +24,11 @@ spring:
   flyway:
     enabled: true
     driver-class-name: org.postgresql.Driver
-    
 springdoc:
   api-docs:
     path: /openapi/v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
   packages-to-scan:
-  - cybersoft.javabackend.girajava14gv
-    
-gira:
-  security:
-    jwt:
-      expiration: 86400000
-      secret: thisismysecret
-
-api:
-  role:
-    name: role controller
-    description: role endpoints
-  categories:
-    name: categories controller
-    description: categories endpoints
+  - cybersoft.javabackend.ecommerce
+  
