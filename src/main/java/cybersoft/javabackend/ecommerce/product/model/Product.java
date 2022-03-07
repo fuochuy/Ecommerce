@@ -1,7 +1,6 @@
 package cybersoft.javabackend.ecommerce.product.model;
 
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,10 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import cybersoft.javabackend.ecommerce.orderDetails.model.OrderDetails;
+
+import cybersoft.javabackend.ecommerce.category.model.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,26 +28,33 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 @Table(name="products")
-public class Product {
+public class Product{
+	
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
-	private int id;
+	private long id;
+
+	
+	@ManyToOne
+	private Category category;
+	
 	
 	@Column(name="name", nullable = false, unique = true)
 	private String name;
 	
-	@Column(name="unitBrief", nullable = false)
-	private String unitBrief;
+	@Column(name="unit_brief", nullable = false)
+	private String unit_brief;
 	
-	@Column(name="unitPrice", nullable = false)
-	private float unitPrice;
+	@Column(name="unit_price", nullable = false)
+	private float unit_price;
 	
 	@Column(name="image", nullable = false)
 	private String image;
 	
-	@Column(name="productDate", nullable = false)
-	private Date productDate;
+	@Column(name="product_date", nullable = false)
+	private Date product_date;
 	
 	@Column(name="available", nullable = false)
 	private int available;
@@ -51,11 +62,8 @@ public class Product {
 	@Column(name="description", nullable = false)
 	private String description;
 	
-	@Column(name="categoryId", nullable = false)
-	private int categoryId;
-	
-	@Column(name="supplierId", nullable = false)
-	private int supplierId;
+	@Column(name="supplier_id", nullable = false)
+	private long supplierId;
 	
 	@Column(name="quantity", nullable = false)
 	private int quantity;
@@ -72,9 +80,4 @@ public class Product {
 	@Column(name="views", nullable = false)
 	private int views;
 	
-	@OneToMany(mappedBy = "productId")
-	private Set<OrderDetails> listOrderDetails = new HashSet<>();
-	
-	
 }
-

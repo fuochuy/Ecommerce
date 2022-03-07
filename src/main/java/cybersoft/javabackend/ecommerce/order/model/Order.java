@@ -1,3 +1,4 @@
+/*
 package cybersoft.javabackend.ecommerce.order.model;
 
 import java.sql.Date;
@@ -9,10 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import cybersoft.javabackend.ecommerce.orderDetails.model.OrderDetails;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +25,10 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders")
+@MappedSuperclass
 public class Order {
 	
 	@Id
@@ -31,14 +36,14 @@ public class Order {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="customerId", nullable = false)
-	private int customerId;
+	@Column(name="customer_id", nullable = false)
+	private int customer_id;
 	
-	@Column(name="orderDate", nullable = false)
-	private Date orderDate;
+	@Column(name="order_date", nullable = false)
+	private Date order_date;
 	
-	@Column(name="requireDate", nullable = false)
-	private Date requireDate;
+	@Column(name="require_date", nullable = false)
+	private Date require_date;
 	
 	@Column(name="receiver", nullable = false)
 	private String receiver;
@@ -55,8 +60,9 @@ public class Order {
 	@Column(name="phone", nullable = false)
 	private String phone;
 	
-	@OneToMany(mappedBy = "orderId")
-	private Set<OrderDetails> listOrderDetails = new HashSet<>();
+	//@OneToMany(mappedBy = "order_id")
+	//private Set<OrderDetails> listOrderDetails = new HashSet<>();
 	
 	
 }
+*/
