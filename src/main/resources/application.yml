@@ -31,4 +31,9 @@ springdoc:
     path: /swagger-ui.html
   packages-to-scan:
   - cybersoft.javabackend.ecommerce
-  
+
+ecommerce:
+  security:
+    jwt:
+      expiration: 86400000
+      secret: thisismysecret

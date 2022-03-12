@@ -31,7 +31,7 @@ public class CategoryControllerImpl implements CategoryController{
 	@Override
 	public ResponseEntity<Object> createCategory(CategoryDTO dto, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return ResponseHandler.getResponse(bindingResult, HttpStatus.BAD_REQUEST);
+			return ResponseHandler.getErrorResponse(bindingResult, HttpStatus.BAD_REQUEST);
 		}
 		
 		CategoryDTO createdCategory = service.create(dto);
