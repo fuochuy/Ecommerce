@@ -27,7 +27,7 @@ public interface CategoryController {
 			@ApiResponse(responseCode = "200", description = "get categories successfully"),
 			@ApiResponse(responseCode = "403", description = "do not have the correct authorization")
 	})
-	@GetMapping(value = "/categoríe", produces = "application/json")
+	@GetMapping(value = "/categories", produces = "application/json")
 	public ResponseEntity<Object> getCategories();
 	
 	
