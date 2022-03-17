@@ -11,8 +11,7 @@ public class CategoryConverter {
 			return CategoryDTO.builder()
 					.id(category.getId())
 					.name(category.getName())
-					.image(category.getImage())
-					.icon(category.getIcon())
+					.code(category.getCode())
 					.build();
 	}
 	
@@ -28,8 +27,7 @@ public class CategoryConverter {
 	public static Category toCategory(CategoryDTO dto) {
 		return Category.builder()
 				.name(dto.getName())
-				.image(dto.getImage())
-				.icon(dto.getIcon())
+				.code(dto.getCode())
 				.build();
 	}
 }

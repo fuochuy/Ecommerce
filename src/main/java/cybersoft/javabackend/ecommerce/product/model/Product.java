@@ -35,49 +35,44 @@ public class Product{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
 	private long id;
-
 	
 	@ManyToOne
 	private Category category;
 	
-	
 	@Column(name="name", nullable = false, unique = true)
 	private String name;
-	
-	@Column(name="unit_brief", nullable = false)
-	private String unit_brief;
-	
-	@Column(name="unit_price", nullable = false)
-	private float unit_price;
-	
-	@Column(name="image", nullable = false)
-	private String image;
-	
-	@Column(name="product_date", nullable = false)
-	private Date product_date;
-	
-	@Column(name="available", nullable = false)
-	private int available;
 	
 	@Column(name="description", nullable = false)
 	private String description;
 	
-	@Column(name="supplier_id", nullable = false)
-	private long supplierId;
+	@Column(name="image1")
+	private String image1;
 	
-	@Column(name="quantity", nullable = false)
-	private int quantity;
+	@Column(name="image2")
+	private String image2;
 	
-	@Column(name="discount", nullable = false)
+	@Column(name="image3")
+	private String image3;
+	
+	@Column(name="size")
+	private String size;
+	
+	@Column(name="color")
+	private String color;
+	
+	@Column(name="brand")
+	private String brand;
+	
+	@Column(name="price")
+	private float price;
+	
+	@Column(name="discount")
 	private float discount;
 	
-	@Column(name="special", nullable = false)
-	private int special;
+	@Column(name="quantity")
+	private int quantity;
 	
-	@Column(name="latest", nullable = false)
-	private int latest;
-	
-	@Column(name="views", nullable = false)
-	private int views;
+	@Column(name="quantity_sold")
+	private int quantity_sold;
 	
 }

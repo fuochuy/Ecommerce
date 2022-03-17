@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import cybersoft.javabackend.ecommerce.category.dto.CategoryDTO;
 import cybersoft.javabackend.ecommerce.category.service.CategoryService;
@@ -37,6 +38,13 @@ public class CategoryControllerImpl implements CategoryController{
 		CategoryDTO createdCategory = service.create(dto);
 		
 		return ResponseHandler.getResponse(createdCategory, HttpStatus.OK);
+	}
+
+	@Override
+	public ModelAndView index() {
+		ModelAndView modelAndView = new ModelAndView();
+	    modelAndView.setViewName("index");
+	    return modelAndView;
 	}
 	
 

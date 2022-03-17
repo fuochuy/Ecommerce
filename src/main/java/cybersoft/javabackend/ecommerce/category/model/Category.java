@@ -1,13 +1,11 @@
 package cybersoft.javabackend.ecommerce.category.model;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,11 +33,8 @@ public class Category {
 	@Column(name="name", unique = true, nullable = false)
 	private String name;
 	
-	@Column(name="image", nullable = false)
-	private String image;
-	
-	@Column(name="icon")
-	private String icon;
+	@Column(name="code", nullable = false)
+	private String code;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private Set<Product> products = new LinkedHashSet<Product>();
