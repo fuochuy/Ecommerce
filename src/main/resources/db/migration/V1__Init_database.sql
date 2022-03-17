@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS categories(
 
 CREATE TABLE IF NOT EXISTS products(
 	 id   			BIGINT,
-	 category_id	BIGINT NOT NULL,
+	 category_id	BIGINT,
 	 name			VARCHAR(50) NOT NULL UNIQUE,
 	 description	VARCHAR(2000) NOT NULL,
 	 image1			VARCHAR(255),
