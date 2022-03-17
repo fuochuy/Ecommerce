@@ -1,29 +1,26 @@
 CREATE TABLE IF NOT EXISTS categories(
 	 id   			BIGINT,
 	 name			VARCHAR(50) NOT NULL UNIQUE,
-	 image 			VARCHAR(50) NOT NULL,
-	 icon  			VARCHAR(50),
-	 
+	 code  			VARCHAR(50) NOT NULL,
 	 primary key(id)
 );
 
 CREATE TABLE IF NOT EXISTS products(
 	 id   			BIGINT,
-	 name			VARCHAR(50) NOT NULL UNIQUE,
-	 unit_brief  	VARCHAR(50) NOT NULL,
-	 unit_price 	FLOAT NOT NULL,
-	 image			VARCHAR(50) NOT NULL,
-	 product_date	DATE NOT NULL,
-	 available 		INT NOT NULL,
-	 description	VARCHAR(2000) NOT NULL,
 	 category_id	BIGINT NOT NULL,
-	 supplier_id	BIGINT NOT NULL,
-	 quantity		INT NOT NULL,
-	 discount		FLOAT NOT NULL,
-	 special		INT NOT NULL,
-	 latest			INT NOT NULL,
-	 views			INT NOT NULL,
-	 
+	 name			VARCHAR(50) NOT NULL UNIQUE,
+	 description	VARCHAR(2000) NOT NULL,
+	 image1			VARCHAR(255),
+	 image2			VARCHAR(255),
+	 image3			VARCHAR(255),
+	 size			VARCHAR(50),
+	 color			VARCHAR(50),
+	 brand			VARCHAR(50),
+	 price			FLOAT,
+	 discount		FLOAT,
+	 quantity		INT,
+	 quantity_sold	INT,
+
 	 primary key(id)
 );
 

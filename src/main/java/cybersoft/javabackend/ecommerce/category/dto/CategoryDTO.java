@@ -1,6 +1,5 @@
 package cybersoft.javabackend.ecommerce.category.dto;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 import cybersoft.javabackend.ecommerce.category.validation.annotation.UniqueCategoryName;
@@ -25,9 +24,7 @@ public class CategoryDTO {
 	private String name;
 	
 	@NotBlank(message = "{category.image.not-blank}")
-	//@UniqueCategoryName()
-	private String image;
+	private String code;
 	
 	
-	private String icon;
 }
