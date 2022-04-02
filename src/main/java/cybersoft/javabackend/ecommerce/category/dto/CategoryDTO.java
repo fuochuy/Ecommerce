@@ -20,7 +20,6 @@ public class CategoryDTO {
 	private long id;
 	
 	@NotBlank(message = "{category.name.not-blank}")
-	@UniqueCategoryName(message = "This Category Name is used. please choose another one.")
 	private String name;
 	
 	@NotBlank(message = "{category.image.not-blank}")

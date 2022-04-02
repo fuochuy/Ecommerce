@@ -33,18 +33,11 @@ public class ProductDTO {
 	
 	private String image3;
 	
-	private String size;
-	
-	private String color;
-	
 	private String brand;
 	
 	private float price;
 	
 	private float discount;
 	
-	private int quantity;
-	
-	private int quantity_sold;
 	
 }

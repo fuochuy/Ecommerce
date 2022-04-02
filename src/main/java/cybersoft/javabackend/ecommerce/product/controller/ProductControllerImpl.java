@@ -87,8 +87,7 @@ public class ProductControllerImpl implements ProductController{
 	@Override
 	public ResponseEntity<Object> getProductByName(String name) {
 		List<ProductDTO> productDTO = service.findByName(name);
-		
-		
+
 		return ResponseHandler.getResponse(productDTO, HttpStatus.OK);
 	}
 }

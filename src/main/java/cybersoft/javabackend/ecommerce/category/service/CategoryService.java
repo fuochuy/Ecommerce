@@ -7,7 +7,7 @@ import cybersoft.javabackend.ecommerce.category.dto.CategoryDTO;
 import cybersoft.javabackend.ecommerce.category.model.Category;
 
 public interface CategoryService {
-	List<CategoryDTO> findAllDTO();
+	List<CategoryDTO> findByCode(String code);
 	
 	CategoryDTO create(CategoryDTO dto);
 
