@@ -37,3 +37,4 @@ ecommerce:
     jwt:
       expiration: 86400000
       secret: thisismysecret
+      jwtCookieName: ecommerce

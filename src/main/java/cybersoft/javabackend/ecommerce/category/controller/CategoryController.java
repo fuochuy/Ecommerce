@@ -1,16 +1,14 @@
 package cybersoft.javabackend.ecommerce.category.controller;
 
-import java.util.List;
-
-
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import cybersoft.javabackend.ecommerce.category.dto.CategoryDTO;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,8 +25,8 @@ public interface CategoryController {
 			@ApiResponse(responseCode = "200", description = "get categories successfully"),
 			@ApiResponse(responseCode = "403", description = "do not have the correct authorization")
 	})
-	@GetMapping(value = "/categories", produces = "application/json")
-	public ResponseEntity<Object> getCategories();
+	@GetMapping(value = "/shop", produces = "application/json")
+	public String loadShop(Model model);
 	
 	
 	@Operation(method = "post", description = "create new category")
@@ -41,6 +39,5 @@ public interface CategoryController {
 			@Parameter(description = "category dto") @Valid @RequestBody CategoryDTO dto,
 				BindingResult bindingResult
 			);
-	@GetMapping("/index")
-	public ModelAndView index();
+	
 }

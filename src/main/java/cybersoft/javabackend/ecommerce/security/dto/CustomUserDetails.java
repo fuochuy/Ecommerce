@@ -13,4 +13,5 @@ public class CustomUserDetails extends User implements UserDetails{
 		super(username, password, authorities);
 	
 	}
+
 }

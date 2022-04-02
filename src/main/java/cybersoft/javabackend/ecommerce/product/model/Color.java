@@ -1,4 +1,4 @@
-package cybersoft.javabackend.ecommerce.category.model;
+package cybersoft.javabackend.ecommerce.product.model;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -9,34 +9,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import cybersoft.javabackend.ecommerce.product.model.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@SuperBuilder
 @Entity
-@Table(name="category")
-public class Category {
+@Table(name="color")
+public class Color {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
 	private long id;
 	
-	@Column(name="name", nullable = false)
-	private String name;
 	
-	@Column(name="code", nullable = false)
-	private String code;
+	@Column(name = "color")
+	private String color;
 	
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	private Set<Product> products = new LinkedHashSet<Product>();
-	
+	@OneToMany(mappedBy = "color", cascade = CascadeType.ALL)
+	private Set<Stock> stocks = new LinkedHashSet<Stock>();
 }

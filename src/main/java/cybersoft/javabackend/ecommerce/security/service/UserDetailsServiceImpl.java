@@ -24,11 +24,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	private UserRepository repository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Optional<User> userOpt = repository.findByEmail(email);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<User> userOpt = repository.findByUsername(username);
+		
 		
 		if(!userOpt.isPresent()) {
-			throw new UsernameNotFoundException("email is not existed.");
+			throw new UsernameNotFoundException("username is not existed.");
 		}
 		User currentUser = userOpt.get();
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

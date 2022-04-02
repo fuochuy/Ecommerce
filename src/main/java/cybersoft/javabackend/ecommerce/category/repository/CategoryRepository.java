@@ -16,4 +16,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long>{
 	List<CategoryDTO> findAllDTO();
 
 	Optional<Category> findByName(String categoryName);
+
+	List<Category> findByCode(String code);
 }

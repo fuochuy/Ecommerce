@@ -5,9 +5,11 @@ import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import cybersoft.javabackend.ecommerce.security.dto.LoginDTO;
 import cybersoft.javabackend.ecommerce.user.dto.UserDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -37,4 +39,17 @@ public interface UserController {
 			@Parameter(description = "user dto") @Valid @RequestBody UserDTO dto,
 				BindingResult bindingResult
 			);
+	
+	
+	@Operation(method = "get", description = "get all users")
+	@ApiResponses({	
+			@ApiResponse(responseCode = "200", description = "get users successfully"),
+			@ApiResponse(responseCode = "403", description = "do not have the correct authorization")
+	})
+	@GetMapping(value = "/api/user/{username}", produces = "application/json")
+	public ResponseEntity<Object> getUserByUserName(
+			@Parameter(description = "username") @PathVariable("username") String username);
+	
+	
+	
 }

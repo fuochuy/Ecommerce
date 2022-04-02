@@ -4,12 +4,15 @@ package cybersoft.javabackend.ecommerce.security.jwt;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import cybersoft.javabackend.ecommerce.security.dto.CustomUserDetails;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -28,6 +31,9 @@ public class JwtUtils {
 	private String jwtExpiration;
 	@Value("&{ecommerce.security.jwt.secret}")
 	private String secret;
+	
+	@Value("${ecommerce.security.jwt.jwtCookieName}")
+	  private String jwtCookie;
 	
 	public String generateJwtToken(Authentication authentication) {
 		
@@ -51,6 +57,13 @@ public class JwtUtils {
 				.signWith(SignatureAlgorithm.HS512, secret)
 				.compact();
 	}
+	
+	public ResponseCookie generateJwtCookie(CustomUserDetails userPrincipal) {
+	    String jwt = generateFakeJwtToken(userPrincipal.getUsername());
+	    ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
+	    return cookie;
+	  }
+	
 	public boolean validateJwtToken(String token) {
 		try {
 			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
@@ -68,5 +81,22 @@ public class JwtUtils {
 		} 
 		
 		return false;
+	}
+	
+	public String getJwtTokenFromRequest(HttpServletRequest request) {
+		String bearer = request.getHeader("Authorization");
+		
+		if (bearer == null) {
+			return null;
+		}
+		
+		return bearer.substring("Bearer ".length()).trim();
+	}
+
+	public String getUsernameFromToken(String token) {
+		return Jwts.parser().setSigningKey(secret)
+			.parseClaimsJws(token)
+			.getBody()
+			.getSubject();
 	}
 }

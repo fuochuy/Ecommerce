@@ -60,13 +60,9 @@ public class ProductServiceImpl implements ProductService{
 		product.setImage1(dto.getImage1());
 		product.setImage2(dto.getImage2());
 		product.setImage3(dto.getImage3());
-		product.setSize(dto.getSize());
-		product.setColor(dto.getColor());
 		product.setBrand(dto.getBrand());
 		product.setPrice(dto.getPrice());
 		product.setDiscount(dto.getDiscount());
-		product.setQuantity(dto.getQuantity());
-		product.setQuantity_sold(dto.getQuantity_sold());
 		
 		Product updatedProduct = repository.save(product);
 		

@@ -1,6 +1,10 @@
 package cybersoft.javabackend.ecommerce.product.model;
 
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import cybersoft.javabackend.ecommerce.category.model.Category;
 import lombok.Getter;
@@ -22,7 +26,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name="products")
+@Table(name="product")
 public class Product{
 	
 	
@@ -31,7 +35,8 @@ public class Product{
 	@Column(name="id")
 	private long id;
 	
-	
+	@Column(name="category_id")
+	private long category_id;
 	
 	@Column(name="name", nullable = false, unique = true)
 	private String name;
@@ -48,12 +53,6 @@ public class Product{
 	@Column(name="image3")
 	private String image3;
 	
-	@Column(name="size")
-	private String size;
-	
-	@Column(name="color")
-	private String color;
-	
 	@Column(name="brand")
 	private String brand;
 	
@@ -63,17 +62,11 @@ public class Product{
 	@Column(name="discount")
 	private float discount;
 	
-	@Column(name="quantity")
-	private int quantity;
-	
-	@Column(name="quantity_sold")
-	private int quantity_sold;
-	
-	@Column(name="category_id")
-	private long category_id;
-	
 	@ManyToOne
 	@JoinColumn(name="category_id", insertable = false, updatable = false)
 	private Category category;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private Set<Stock> stocks = new LinkedHashSet<Stock>();
 	
 }

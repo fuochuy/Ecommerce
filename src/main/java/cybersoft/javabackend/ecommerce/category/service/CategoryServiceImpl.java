@@ -22,8 +22,8 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 	
 	@Override
-	public List<CategoryDTO> findAllDTO() {
-		List<Category> categories = repository.findAll();
+	public List<CategoryDTO> findByCode(String code) {
+		List<Category> categories = repository.findByCode(code);
 		
 		return CategoryConverter.toCategoryDTOs(categories);
 	}

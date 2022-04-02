@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -42,11 +41,4 @@ public class Role{
 	@Column(name = "code", unique = true)
 	private String code;
 	
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(
-			name = "role_user",
-			joinColumns= {@JoinColumn(name="role_id")},
-			inverseJoinColumns = {@JoinColumn(name="user_id")}
-			)
-	private Set<User> users = new LinkedHashSet<>();
 }

@@ -38,7 +38,4 @@ public class UpdateProductDTO {
 	
 	private float discount;
 	
-	private int quantity;
-	
-	private int quantity_sold;
 }

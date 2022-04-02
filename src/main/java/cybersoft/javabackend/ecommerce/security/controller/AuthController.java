@@ -1,31 +1,24 @@
 package cybersoft.javabackend.ecommerce.security.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import cybersoft.javabackend.ecommerce.security.dto.LoginDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 public interface AuthController {
-	@Operation(method = "post", description = "generate fake token")
+	@Operation(method = "post", description = "user login to get token")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "generated token successfully"),
-			@ApiResponse(responseCode = "400", description = "do not have the correct authorization")
+			@ApiResponse(responseCode = "200", description = "login successfully"),
+			@ApiResponse(responseCode = "403", description = "incorrect username or password")
 	})
-	@PostMapping(value = "/api/fake-token", produces = "application/json")
-	public ResponseEntity<Object> createTemporaryToken(
-			@RequestParam(value = "username", defaultValue = "fuochuy") String username);
-	
-	@Operation(method = "post", description = "verify fake token")
-	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "generated token successfully"),
-			@ApiResponse(responseCode = "403", description = "do not have the correct authorization")
-	})
-	@PostMapping(value = "/api/verify-token", produces = "application/json")
-	public ResponseEntity<Object> verifyFakeToken(
-			@RequestBody String token);
+	@PostMapping(value = "/api/login", produces = "application/json")
+	public ResponseEntity<Object> login(
+			@Valid @RequestBody LoginDTO dto, BindingResult bindingResult);
 }
