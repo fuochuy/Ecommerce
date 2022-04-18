@@ -43,7 +43,7 @@ public class UserDTO {
 	@NotBlank
 	private String phone;
 	
-	private int activated;
+	private Boolean activated;
 
 
 }

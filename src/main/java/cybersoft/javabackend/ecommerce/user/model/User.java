@@ -1,11 +1,11 @@
 package cybersoft.javabackend.ecommerce.user.model;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,8 +21,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -54,23 +54,20 @@ public class User {
 	private String phone;
 	
 	@Column(name="activated")
-	private int activated;
+	private Boolean activated;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(
 			name = "role_user",
 			joinColumns= {@JoinColumn(name="user_id")},
 			inverseJoinColumns = {@JoinColumn(name="role_id")}
 			)
-	private Set<Role> roles = new LinkedHashSet<>();
+	private Set<Role> roles = new HashSet<>();
 
+	
 
-	public Set<Role> getRoles() {
-	    return roles;
-	  }
+	
 
-	  public void setRoles(Set<Role> roles) {
-	    this.roles = roles;
-	  }
+	
 }
 

@@ -38,3 +38,6 @@ ecommerce:
       expiration: 86400000
       secret: thisismysecret
       jwtCookieName: ecommerce
+      
+server:
+  port: 8090

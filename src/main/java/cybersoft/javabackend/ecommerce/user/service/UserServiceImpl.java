@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.ecommerce.product.exception.InvalidProductException;
@@ -19,6 +19,9 @@ import cybersoft.javabackend.ecommerce.user.util.UserConverter;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
+	private PasswordEncoder encoder;
+	
+	@Autowired
 	private UserRepository repository;
 	@Override
 	public List<User> getUsers() {
@@ -29,9 +32,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserDTO create(@Valid UserDTO dto) {
 		User user = UserConverter.toUser(dto);
-		
+		user.setPassword(encoder.encode(dto.getPassword()));
 		User createdUser = repository.save(user);
-		
+		createdUser.setPassword(null);
 		return UserConverter.toUserDTO(createdUser);
 	}
 	@Override
@@ -46,6 +49,11 @@ public class UserServiceImpl implements UserService{
 			throw new InvalidProductException("Product id is not valid");
 		}
 		return userOpt;
+	}
+	@Override
+	public Optional<User> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

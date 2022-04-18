@@ -40,5 +40,7 @@ public class Role{
 	
 	@Column(name = "code", unique = true)
 	private String code;
+
+	
 	
 }
